@@ -32,7 +32,7 @@ management:
           endpoint: "http://localhost:3000/api/public/otel/v1/traces"
           transport: "http"
           headers:
-            Authorization: "Basic <BASE64(pk-lf-...:sk-lf-...)>"
+            Authorization: "Basic cGstbGYtZDRmMmVlM2ItYTg0Ni00ODc4LWEyNjktMzI4ZGE1MjBkYTkyOnNrLWxmLTRiNzQwMTBlLTFmYjMtNDhiMy1iNzIyLTVkMmU5YmQxYWQ2ZA=="
   observations:
     http:
       server:
