@@ -13,6 +13,11 @@ services:
       # IMPORTANTE: Ativa os logs internos do Coletor e do Tempo para vermos erros
       - ENABLE_LOGS_OTELCOL=true
       - ENABLE_LOGS_TEMPO=true
+      # Configurações para habilitar rastreamento completo
+      - OTELCOL_METRICS_ENABLED=true
+      - OTELCOL_TRACES_ENABLED=true
+      - OTELCOL_LOGS_ENABLED=true
+      - TEMPO_ENABLED=true
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
       interval: 10s

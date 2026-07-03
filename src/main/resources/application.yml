@@ -20,13 +20,14 @@ spring:
         include-completion: true   # Sends responses as trace tag
 
 management:
-  otlp:
+  opentelemetry:
     tracing:
-      endpoint: http://localhost:4317 # Use a porta gRPC se estiver usando o starter OpenTelemetry
-  tracing:
-    enabled: true # Garante que o tracing está ativo
-    sampling:
-      probability: 1.0 # Força o envio de 100% das requisições (mude em produção)
+      export:
+        otlp:
+          endpoint: "http://localhost:3000/api/public/otel"
+          transport: "http"
+          headers:
+            Authorization: "Bearer cGstbGYtZDRmMmVlM2ItYTg0Ni00ODc4LWEyNjktMzI4ZGE1MjBkYTkyOnNrLWxmLTRiNzQwMTBlLTFmYjMtNDhiMy1iNzIyLTVkMmU5YmQxYWQ2ZA=="
 
 logging:
   level:
