@@ -16,19 +16,33 @@ spring:
               endpoint: /mcp
     chat:
       observations:
-        include-prompt: true       # Sends prompts as trace tags
-        include-completion: true   # Sends responses as trace tag
+        include-prompt: true
+        include-completion: true
 
 management:
+  tracing:
+    sampling:
+      probability: 1.0
   opentelemetry:
+    resource-attributes:
+      service.name: "ai_agent"
     tracing:
       export:
         otlp:
-          endpoint: "http://localhost:3000/api/public/otel"
+          endpoint: "http://localhost:3000/api/public/otel/v1/traces"
           transport: "http"
           headers:
-            Authorization: "Bearer cGstbGYtZDRmMmVlM2ItYTg0Ni00ODc4LWEyNjktMzI4ZGE1MjBkYTkyOnNrLWxmLTRiNzQwMTBlLTFmYjMtNDhiMy1iNzIyLTVkMmU5YmQxYWQ2ZA=="
+            Authorization: "Basic <BASE64(pk-lf-...:sk-lf-...)>"
+  observations:
+    http:
+      server:
+        requests:
+          enabled: false
+      client:
+        requests:
+          enabled: false
 
 logging:
   level:
-    root: DEBUG
+    root: INFO
+    com.example.ai_agent: DEBUG
